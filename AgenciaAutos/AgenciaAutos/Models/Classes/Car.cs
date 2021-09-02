@@ -4,19 +4,15 @@
     public class Car
     {
 
-        public string model { get; set; }
-        public int doorsNumber { get; set; }
-        public string color { get; set; }
-        public string brand { get; set; }
-        public string transmition { get; set; }
+        private string model { get; set; }
+        private int doorsNumber { get; set; }
+        private string color { get; set; }
+        private string brand { get; set; }
+        private string transmition { get; set; }
 
-        public Car(string _model, int _doorsNumber, string _color, string _brand, string _transmition)
+        public Car()
         {
-            model = _model;
-            doorsNumber = _doorsNumber;
-            color = _color;
-            brand = _brand;
-            transmition = _transmition;
+            
         }
 
     }
