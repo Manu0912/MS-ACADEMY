@@ -1,5 +1,7 @@
 using System;
 
+namespace Enums
+{
     public enum Brands
     {
         Fiat,
@@ -9,6 +11,8 @@ using System;
         Renault,
         Volkswagen
     }
+}
+    
 
 
 
