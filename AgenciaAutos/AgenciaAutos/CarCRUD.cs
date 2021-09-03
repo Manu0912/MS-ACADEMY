@@ -22,7 +22,6 @@ namespace CRUD
          
             if (car !=null)
             {
-				ReadJson();
 				cars.Add(car);
 				WriteFile();
 			}
@@ -35,11 +34,12 @@ namespace CRUD
 
 			string json = JsonSerializer.Serialize(cars, options);
 
-			using (var writer = new StreamWriter(filePath))
+			using (StreamWriter sw = new StreamWriter(filePath))
 			{
-				writer.Write(json);
+				sw.Write(json);
+				sw.Close();
 			}
-			Console.WriteLine(json);
+
 		}
 
 		public void ReadJson()
@@ -51,7 +51,6 @@ namespace CRUD
             {
 				json = ReadFile();
             }
-			
 
 			if (!string.IsNullOrEmpty(json))
 			{

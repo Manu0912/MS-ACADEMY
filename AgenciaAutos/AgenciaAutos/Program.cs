@@ -2,6 +2,7 @@
 using CRUD;
 using Enums;
 using System;
+using System.Text.Json;
 
 namespace AgenciaAutos
 {
@@ -9,7 +10,7 @@ namespace AgenciaAutos
     {
         static void Main(string[] args)
         {
-            //test create function
+            //test CRUD function
             string brand = Enum.GetName(typeof(Brands), 0);
             string transmition = Enum.GetName(typeof(Transmition), 0);
 
@@ -29,6 +30,21 @@ namespace AgenciaAutos
 
             Console.WriteLine(read);
 
+            car2.model = "y";
+            carcrud.Update(car2);
+
+            read = carcrud.ReadFile();
+            Console.WriteLine(read);
+
+            carcrud.Delete(1);
+
+            read = carcrud.ReadFile();
+            Console.WriteLine(read);
+
+            var options = new JsonSerializerOptions { WriteIndented = true };
+
+            string json = JsonSerializer.Serialize(carcrud.Get(2), options);
+            Console.WriteLine(json);
         }
     }
 }
