@@ -4,7 +4,6 @@ namespace AgenciaAutos.car
 {
     public class Car
     {
-
         public int id { get; set; }
         public string model { get; set; }
         public int doorsNumber { get; set; }
@@ -25,10 +24,7 @@ namespace AgenciaAutos.car
             color = _color;
             brand = _brand;
             transmition = _transmition;
-            
-        }   
-
+        }  
     }
 }
     
-
