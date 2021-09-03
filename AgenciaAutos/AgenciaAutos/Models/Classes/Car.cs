@@ -3,12 +3,12 @@
 
     public class Car
     {
-
-        public string model;
-        public int doorsNumber;
-        public string color; 
-        public string brand; 
-        public string transmition;
+        public int id { get; set; }
+        public string model { get; set; }
+        public int doorsNumber { get; set; }
+        public string color { get; set; }
+        public string brand { get; set; }
+        public string transmition { get; set; }
 
         public Car(string _model, int _doorsNumber, string _color, string _brand, string _transmition)
         {
