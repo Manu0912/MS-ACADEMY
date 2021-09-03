@@ -1,8 +1,10 @@
 using System;
 
-
-public enum Transmition
+namespace Enums
 {
-    manual,
-    automatic
+    public enum Transmition
+    {
+        manual = 0,
+        automatic = 1
+    }
 }
