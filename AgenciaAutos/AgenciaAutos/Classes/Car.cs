@@ -5,6 +5,7 @@ namespace AgenciaAutos.car
     public class Car
     {
 
+        public int id;
         public string model;
         public int doorsNumber;
         public string color;
@@ -15,9 +16,10 @@ namespace AgenciaAutos.car
         {
 
         }
-        public Car(string _model, int _doorsNumber, string _color, string _brand, string _transmition)
+        public Car(string _model, int _doorsNumber, string _color, string _brand, string _transmition, int _id)
         {
-            
+
+            id = _id;
             model = _model;
             doorsNumber = _doorsNumber;
             color = _color;

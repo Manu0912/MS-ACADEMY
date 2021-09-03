@@ -45,8 +45,13 @@ namespace CRUD
 		public void ReadJson()
 		{
 			cars = new List<Car>();
+			string json = "";
 
-			var json = ReadFile();
+			if (File.Exists(filePath))
+            {
+				json = ReadFile();
+            }
+			
 
 			if (!string.IsNullOrEmpty(json))
 			{
@@ -59,6 +64,43 @@ namespace CRUD
 			return File.ReadAllText(filePath);
 		}
 
+		public Car Get(int _id)
+        {
+			ReadJson();
+			return cars.Find(x => x.id == _id);
+        }
+
+		public Car Update(Car car)
+		{
+			Car obj = null;
+			ReadJson();
+			cars.ForEach(x => { 
+				if(x.id == car.id)
+                {
+					obj = x;
+					x.brand = car.brand;
+					x.color = car.color;
+					x.doorsNumber = car.doorsNumber;
+					x.model = car.model;
+					x.transmition = car.transmition;
+                }
+			});
+			WriteFile();
+
+			return obj;
+		}
+
+		public void Delete(int id)
+		{
+			Car car = new Car();
+			ReadJson();
+			cars.ForEach(x => 
+			{
+				if (x.id == id) car = x; 
+			});
+			cars.Remove(car);
+			WriteFile();
+		}
 	}
 }
 
