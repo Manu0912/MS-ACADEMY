@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AgenciaAutos.car
+﻿namespace AgenciaAutos.car 
 {
     public class Car
     {

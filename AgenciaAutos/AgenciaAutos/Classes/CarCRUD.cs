@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using AgenciaAutos.car;
+using AgenciaAutos.Interfaces;
 
-namespace CRUD
+namespace AgenciaAutos.CRUD
 {
-	public class CarCRUD
+	public class CarCRUD : ICRUD
 	{
 		private string filePath;
 		private List<Car> cars;
