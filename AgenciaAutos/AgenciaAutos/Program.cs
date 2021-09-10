@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using AgenciaAutos.Options;
 using System.Threading.Tasks;
+using AgenciaAutos.Classes;
 
 namespace AgenciaAutos
 {
@@ -16,7 +17,15 @@ namespace AgenciaAutos
         {
             using IHost host = CreateHostBuilder(args).Build();
 
-            TestCrud();
+            Container<Car> cars = new Container<Car>();
+            Car item = new Car("asdasdjasd", 7, "black", "pepea", "manual", 2);
+
+
+            //cars.Create(item, CRUDOptions.CarsPATH);
+            cars.Update(item,CRUDOptions.CarsPATH);
+            Console.WriteLine(cars.ReadFile(CRUDOptions.CarsPATH));
+
+            //TestCrud();
             
             await host.RunAsync();
         }
