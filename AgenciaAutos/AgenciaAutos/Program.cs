@@ -4,7 +4,6 @@ using Enums;
 using System;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.Hosting;
 using AgenciaAutos.Options;
 using System.Threading.Tasks;
@@ -43,10 +42,6 @@ namespace AgenciaAutos
                     CRUDOptions crudOptions = new();
                     configurationRoot.GetSection(nameof(CRUDOptions))
                                      .Bind(crudOptions);
-
-                    Console.WriteLine($"TransientFaultHandlingOptions.Enabled={options.Enabled}");
-                    Console.WriteLine($"TransientFaultHandlingOptions.AutoRetryDelay={options.AutoRetryDelay}");
-
                 });
 
         static void TestCrud(){
