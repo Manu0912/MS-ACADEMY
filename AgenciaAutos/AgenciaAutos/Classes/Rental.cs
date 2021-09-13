@@ -8,13 +8,19 @@ namespace AgenciaAutos
 {
     class Rental
     {
-        private string rentalDuration { get; set; }
-        private string clientDni { get; set; }
-        private string carRentalId { get; set; }
-        private DateTime returnedDate { get; set; }
+        public int id { get; set; }
+        public string rentalDuration { get; set; }
+        public string clientDni { get; set; }
+        public string carRentalId { get; set; }
+        public DateTime returnedDate { get; set; }
 
-        Rental(string _rentalDuration, string _clientDni, string _carRentalId, DateTime _returnedDate)
+        public Rental()
         {
+
+        }
+        public Rental(int _id, string _rentalDuration, string _clientDni, string _carRentalId, DateTime _returnedDate)
+        {
+            id = _id;
             rentalDuration = _rentalDuration;
             clientDni = _clientDni;
             carRentalId = _carRentalId;

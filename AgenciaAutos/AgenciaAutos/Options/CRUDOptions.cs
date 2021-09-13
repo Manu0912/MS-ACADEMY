@@ -10,6 +10,6 @@ namespace AgenciaAutos.Options
     {
         public static string CarsPATH { get; set; }
         public static string ClientsPATH { get; set; }
-        public static string RentalPATH { get; set; }
+        public static string RentalsPATH { get; set; }
     }
 }

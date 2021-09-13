@@ -9,7 +9,7 @@ namespace AgenciaAutos.Classes
 {
     class Container<T>
     {
-        private List<T> list { get; set; }
+        public List<T> list { get; set; }
 
         public Container()
         {
@@ -21,6 +21,7 @@ namespace AgenciaAutos.Classes
 
             if (item != null)
             {
+                
                 ReadJson(filePath);
                 list.Add(item);
                 WriteFile(filePath);
@@ -71,6 +72,8 @@ namespace AgenciaAutos.Classes
             ReadJson(filePath);
 
             List<Car> cars = new List<Car>();
+            List<Rental> rentals = new List<Rental>();
+            List<Client> clients = new List<Client>();
 
             list.ForEach(x =>
             {
@@ -83,17 +86,62 @@ namespace AgenciaAutos.Classes
                     if (y.id == updated.id)
                     {
                         cars.Add(updated);
+                        obj = (T)(object)updated;
                     }
                     else
                     {
                         cars.Add(y);
+                    }
+                }else if (x.GetType() == typeof(Rental))
+                {
+                    Rental y = (Rental)(object)x;
+                    Rental updated = (Rental)(object)item;
+                    
+
+                    if (y.id == updated.id)
+                    {
+                        rentals.Add(updated);
+                        obj = (T)(object)updated;
+                    }
+                    else
+                    {
+                        rentals.Add(y);
+                    }
+                }
+                else if (x.GetType() == typeof(Client))
+                {
+                    Client y = (Client)(object)x;
+                    Client updated = (Client)(object)item;
+
+
+                    if (y.dni == updated.dni)
+                    {
+                        updated.lastModified = new DateTime();
+                        clients.Add(updated);
+                        obj = (T)(object)updated;
+                    }
+                    else
+                    {
+                        clients.Add(y);
                     }
                 }
             });
 
             if (cars.Count > 0)
             {
-                list = (List<T>)(object)cars;
+                if(item.GetType() == typeof(Car))
+                {
+                    list = (List<T>)(object)cars;
+                }
+                else if(item.GetType() == typeof(Rental))
+                {
+                    list = (List<T>)(object)rentals;
+                }
+                else if (item.GetType() == typeof(Client))
+                {
+                    list = (List<T>)(object)clients;
+                }
+
             }
 
             WriteFile(filePath);
@@ -118,6 +166,23 @@ namespace AgenciaAutos.Classes
                         count = list.IndexOf(x);
                     }
 
+                }else if (x.GetType() == typeof(Client))
+                {
+                    Client y = (Client)(object)x;
+
+                    if (y.dni == id)
+                    {
+                        count = list.IndexOf(x);
+                    }
+
+                }else if (x.GetType() == typeof(Rental))
+                {
+                    Rental y = (Rental)(object)x;
+
+                    if (y.id == id)
+                    {
+                        count = list.IndexOf(x);
+                    }
                 }
             });
 
@@ -137,6 +202,13 @@ namespace AgenciaAutos.Classes
                 if (x.GetType() == typeof(Car))
                 {
                     Car y = (Car)(object)x;
+                    if (y.id == _id)
+                    {
+                        count = list.IndexOf(x);
+                    }
+                }else if (x.GetType() == typeof(Rental))
+                {
+                    Rental y = (Rental)(object)x;
                     if (y.id == _id)
                     {
                         count = list.IndexOf(x);
