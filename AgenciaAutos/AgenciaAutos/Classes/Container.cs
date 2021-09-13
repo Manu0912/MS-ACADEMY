@@ -147,5 +147,9 @@ namespace AgenciaAutos.Classes
             return list[count];
         }
 
+        public List<T> GetAll()
+        {
+            return list;
+        }
     }
 }
