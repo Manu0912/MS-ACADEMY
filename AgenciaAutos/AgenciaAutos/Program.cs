@@ -26,7 +26,9 @@ namespace AgenciaAutos
             Console.WriteLine(cars.ReadFile(CRUDOptions.CarsPATH));
 
             //TestCrud();
-            
+            cars.Delete(2, CRUDOptions.CarsPATH);
+            Console.WriteLine(cars.ReadFile(CRUDOptions.CarsPATH));
+
             await host.RunAsync();
         }
 
