@@ -5,7 +5,6 @@ namespace AgenciaAutos
 {
     class Rental : Entity
     {
-        public int id { get; set; }
         public string rentalDuration { get; set; }
         public string clientDni { get; set; }
         public string carRentalId { get; set; }

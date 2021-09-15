@@ -1,13 +1,10 @@
-﻿using AgenciaAutos.car;
-using AgenciaAutos.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
 namespace AgenciaAutos.Classes
 {
-    class Container<T>
+    class Container<T> where T : Entity
     {
         public List<T> list { get; set; }
 
@@ -70,78 +67,24 @@ namespace AgenciaAutos.Classes
         {
             T obj = default;
             ReadJson(filePath);
-
-            List<Car> cars = new List<Car>();
-            List<Rental> rentals = new List<Rental>();
-            List<Client> clients = new List<Client>();
+            List<T> newList= new List<T>();
 
             list.ForEach(x =>
             {
-                if (x.GetType() == typeof(Car))
-                {
-                    Car y = (Car)(object)x;
-                    Car updated = (Car)(object)item;
-
-
-                    if (y.id == updated.id)
+                    if (item.id == x.id)
                     {
-                        cars.Add(updated);
-                        obj = (T)(object)updated;
+                        newList.Add(item);
+                        obj = item;
                     }
                     else
                     {
-                        cars.Add(y);
+                        newList.Add(x);
                     }
-                }else if (x.GetType() == typeof(Rental))
-                {
-                    Rental y = (Rental)(object)x;
-                    Rental updated = (Rental)(object)item;
-                    
-
-                    if (y.id == updated.id)
-                    {
-                        rentals.Add(updated);
-                        obj = (T)(object)updated;
-                    }
-                    else
-                    {
-                        rentals.Add(y);
-                    }
-                }
-                else if (x.GetType() == typeof(Client))
-                {
-                    Client y = (Client)(object)x;
-                    Client updated = (Client)(object)item;
-
-
-                    if (y.dni == updated.dni)
-                    {
-                        updated.lastModified = new DateTime();
-                        clients.Add(updated);
-                        obj = (T)(object)updated;
-                    }
-                    else
-                    {
-                        clients.Add(y);
-                    }
-                }
             });
 
-            if (cars.Count > 0)
+            if (newList.Count > 0)
             {
-                if(item.GetType() == typeof(Car))
-                {
-                    list = (List<T>)(object)cars;
-                }
-                else if(item.GetType() == typeof(Rental))
-                {
-                    list = (List<T>)(object)rentals;
-                }
-                else if (item.GetType() == typeof(Client))
-                {
-                    list = (List<T>)(object)clients;
-                }
-
+                list = newList;
             }
 
             WriteFile(filePath);
@@ -149,40 +92,16 @@ namespace AgenciaAutos.Classes
             return obj;
         }
 
-        public void Delete(int id, string filePath)
+        public void Delete(int _id, string filePath)
         {
-            Car car = new Car();
             ReadJson(filePath);
             int count = -1;
             
             list.ForEach(x =>
             {
-                if (x.GetType() == typeof(Car))
+                if (x.id == _id)
                 {
-                    Car y = (Car)(object)x;
-
-                    if (y.id == id)
-                    {
-                        count = list.IndexOf(x);
-                    }
-
-                }else if (x.GetType() == typeof(Client))
-                {
-                    Client y = (Client)(object)x;
-
-                    if (y.dni == id)
-                    {
-                        count = list.IndexOf(x);
-                    }
-
-                }else if (x.GetType() == typeof(Rental))
-                {
-                    Rental y = (Rental)(object)x;
-
-                    if (y.id == id)
-                    {
-                        count = list.IndexOf(x);
-                    }
+                    count = list.IndexOf(x);
                 }
             });
 
@@ -199,20 +118,9 @@ namespace AgenciaAutos.Classes
 
             list.ForEach(x =>
             {
-                if (x.GetType() == typeof(Car))
+                if (x.id == _id)
                 {
-                    Car y = (Car)(object)x;
-                    if (y.id == _id)
-                    {
-                        count = list.IndexOf(x);
-                    }
-                }else if (x.GetType() == typeof(Rental))
-                {
-                    Rental y = (Rental)(object)x;
-                    if (y.id == _id)
-                    {
-                        count = list.IndexOf(x);
-                    }
+                    count = list.IndexOf(x);
                 }
             });
 

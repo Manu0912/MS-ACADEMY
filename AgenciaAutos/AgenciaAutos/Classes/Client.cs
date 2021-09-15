@@ -5,7 +5,6 @@ namespace AgenciaAutos
 {
     class Client : Entity
     {
-        public int id { get; set; }
         public string name { get; set; }
         public string lastName { get; set; }
         public string telephoneNumber { get; set; }

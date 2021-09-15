@@ -4,7 +4,6 @@ namespace AgenciaAutos.car
 {
     public class Car : Entity
     {
-        public int id { get; set; }
         public string model { get; set; }
         public int doorsNumber { get; set; }
         public string color { get; set; }
