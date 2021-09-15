@@ -38,10 +38,6 @@ namespace AgenciaAutos
 
                     IConfigurationRoot configurationRoot = configuration.Build();
 
-                    TransientFaultHandlingOptions options = new();
-                    configurationRoot.GetSection(nameof(TransientFaultHandlingOptions))
-                                     .Bind(options);
-
                     CRUDOptions crudOptions = new();
                     configurationRoot.GetSection(nameof(CRUDOptions))
                                      .Bind(crudOptions);
