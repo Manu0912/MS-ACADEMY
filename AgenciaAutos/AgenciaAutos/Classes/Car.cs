@@ -1,6 +1,8 @@
-﻿namespace AgenciaAutos.car 
+﻿using AgenciaAutos.Classes;
+
+namespace AgenciaAutos.car 
 {
-    public class Car
+    public class Car : Entity
     {
         public int id { get; set; }
         public string model { get; set; }

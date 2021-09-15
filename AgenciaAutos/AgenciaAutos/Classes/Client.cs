@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AgenciaAutos.Classes;
+using System;
 
 namespace AgenciaAutos
 {
-    class Client
+    class Client : Entity
     {
-        public int dni { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
         public string lastName { get; set; }
         public string telephoneNumber { get; set; }
@@ -18,9 +19,9 @@ namespace AgenciaAutos
         {
 
         }
-        Client(int _dni,string _name, string _lastname, string _telephoneNumber, string _address, string _city, string _state, int _postalCode, DateTime _lastModified)
+        Client(int _id,string _name, string _lastname, string _telephoneNumber, string _address, string _city, string _state, int _postalCode, DateTime _lastModified)
         {
-            dni = _dni;
+            id = _id;
             name = _name;
             lastName = _lastname;
             telephoneNumber = _telephoneNumber;

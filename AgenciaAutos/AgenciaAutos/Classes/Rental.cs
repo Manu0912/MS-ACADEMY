@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AgenciaAutos.Classes;
+using System;
 
 namespace AgenciaAutos
 {
-    class Rental
+    class Rental : Entity
     {
         public int id { get; set; }
         public string rentalDuration { get; set; }
