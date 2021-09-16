@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace AgenciaAutos.Classes
 {
-    class Container<T> where T : Entity
+    class Container<T> where T : IEntity
     {
         public List<T> list { get; set; }
 
@@ -52,7 +54,8 @@ namespace AgenciaAutos.Classes
 
             if (!string.IsNullOrEmpty(json))
             {
-                list = (List<T>)JsonSerializer.Deserialize(json, typeof(List<T>));
+                List<Rental> entities = JsonSerializer.Deserialize<List<Rental>>(json);
+                
             }
 
         }
@@ -71,7 +74,7 @@ namespace AgenciaAutos.Classes
 
             list.ForEach(x =>
             {
-                    if (item.id == x.id)
+                    if (item.Id == x.Id)
                     {
                         newList.Add(item);
                         obj = item;
@@ -99,7 +102,7 @@ namespace AgenciaAutos.Classes
             
             list.ForEach(x =>
             {
-                if (x.id == _id)
+                if (x.Id == _id)
                 {
                     count = list.IndexOf(x);
                 }
@@ -118,7 +121,7 @@ namespace AgenciaAutos.Classes
 
             list.ForEach(x =>
             {
-                if (x.id == _id)
+                if (x.Id == _id)
                 {
                     count = list.IndexOf(x);
                 }
@@ -130,6 +133,15 @@ namespace AgenciaAutos.Classes
         public List<T> GetAll()
         {
             return list;
+        }
+
+        public string GetFilePath(string basePath)
+        {
+            StringBuilder sb = new();
+
+            sb.AppendFormat("{0}{1}{2}", basePath, typeof(T).Name,".json");
+
+            return sb.ToString();
         }
     }
 }

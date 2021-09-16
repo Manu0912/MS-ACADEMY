@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using AgenciaAutos.Options;
 using System.Threading.Tasks;
 using AgenciaAutos.Classes;
+using System;
 
 namespace AgenciaAutos
 {
@@ -17,9 +18,9 @@ namespace AgenciaAutos
             Container<Rental> rentals = new Container<Rental>();
             Container<Client> clients = new Container<Client>();
 
-            //TEST FUNCTIONS HERE
-
-            //END TEST FUNCTIONS
+            //rentals.Create(new(1,"sdf","74158","asdn",new DateTime()),cars.GetFilePath(CRUDOptions.BasePath));
+            //rentals.Create(new(1, "sdf", "74158", "asdn", new DateTime()), cars.GetFilePath(CRUDOptions.BasePath));
+            
 
             await host.RunAsync();
         }
@@ -42,10 +43,5 @@ namespace AgenciaAutos
                     configurationRoot.GetSection(nameof(CRUDOptions))
                                      .Bind(crudOptions);
                 });
-
-       
-        
-            
-
     }
 }
