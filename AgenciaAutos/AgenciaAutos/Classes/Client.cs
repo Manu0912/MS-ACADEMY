@@ -15,7 +15,8 @@ namespace AgenciaAutos
         public int postalCode { get; set; }
         public DateTime lastModified { get; set; }
 
-        Client(int _id,string _name, string _lastname, string _telephoneNumber, string _address, string _city, string _state, int _postalCode, DateTime _lastModified)
+        public Client() { }
+        public Client(int _id,string _name, string _lastname, string _telephoneNumber, string _address, string _city, string _state, int _postalCode, DateTime _lastModified)
         {
             Id = _id;
             name = _name;

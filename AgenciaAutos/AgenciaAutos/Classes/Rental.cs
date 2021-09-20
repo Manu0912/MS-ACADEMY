@@ -11,6 +11,7 @@ namespace AgenciaAutos
         public string carRentalId { get; set; }
         public DateTime returnedDate { get; set; }
 
+        public Rental() { }
         public Rental(int _id, string _rentalDuration, string _clientDni, string _carRentalId, DateTime _returnedDate)
         {
             Id = _id;

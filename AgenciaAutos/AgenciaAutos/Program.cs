@@ -18,10 +18,6 @@ namespace AgenciaAutos
             Container<Rental> rentals = new Container<Rental>();
             Container<Client> clients = new Container<Client>();
 
-            //rentals.Create(new(1,"sdf","74158","asdn",new DateTime()),cars.GetFilePath(CRUDOptions.BasePath));
-            //rentals.Create(new(1, "sdf", "74158", "asdn", new DateTime()), cars.GetFilePath(CRUDOptions.BasePath));
-            
-
             await host.RunAsync();
         }
 
